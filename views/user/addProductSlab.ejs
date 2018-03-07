@@ -1,0 +1,66 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/productSlabs/addProductSlab" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_product" value="<%= cod_product %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Slab No. &nbsp;</td>
+            <td><input type="text" name="num_slab" value="<%= num_slab %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>Min Units &nbsp;</td>
+            <td><input type="text" name="num_slab_min_units" value="<%= num_slab_min_units %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Max Units &nbsp;</td>
+            <td><input type="text" name="num_slab_max_units" value="<%= num_slab_max_units %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>UnitPrice Standard &nbsp;</td>
+            <td><input type="text" name="amt_unit_price_standard" value="<%= amt_unit_price_standard %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>UnitPrice Incremental &nbsp;</td>
+            <td><input type="text" name="amt_unit_price_incremental" value="<%= amt_unit_price_incremental %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

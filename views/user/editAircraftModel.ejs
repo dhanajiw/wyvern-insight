@@ -1,0 +1,72 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/aircraftModels/editAircraftModel/<%= cod_aircraft_model %>" method="post" name="form1">
+    <table>
+        <tr>
+            <td>Code&nbsp</td>
+            <td><input type="text" name="cod_aircraft_model" value="<%= cod_aircraft_model %>" disabled="disabled"/></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Name&nbsp</td>
+            <td><input type="text" name="txt_model_name" value="<%= txt_model_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Manufacturer&nbsp</td>
+            <td><input type="text" name="cod_manufacturer" value="<%= cod_manufacturer %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Rollout Date&nbsp</td>
+            <td><input type="date" id="datepicker" name="dat_model_rollout" value="<%= dat_model_rollout %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Aircraft Category&nbsp</td>
+            <td><select class="selectpicker" data-style="btn-info" name="cod_category">
+                    <% data1.forEach(function(user){ %>
+                        <option value="<%= user.txt_category_name %>">
+                            <%= user.txt_category_name %>
+                        </option>
+                    <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Runway Feet&nbsp</td>
+            <td><input type="text" name="num_runway_feet_reqd" value="<%= num_runway_feet_reqd %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="Submit" value="Update" /></td>
+        </tr>
+            <input type="hidden" name="_method" value="PUT" />
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6>
+
+<!--
+including footer content which is common for all pages
+-->
+                    <%- include ../layouts/footer.ejs %>

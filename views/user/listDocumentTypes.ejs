@@ -1,0 +1,97 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+ 
+<h6>
+<div class="row city col-sm-10" >
+<label class="pull-left title1"><%= title %></label>
+
+<form action="/documentTypes/addDocumentTypes" method="get" >
+<b class="pull-right">
+<input type="submit" name="Submit" value="Add New"   />
+</b>
+</form>
+</h6><br><br><br>
+<h6>
+<% if (messages.error) { %>
+    <h5 style="color:red"><%- messages.error %></h5>
+<% } %>
+ 
+<% if (messages.success) { %>
+    <h5 style="color:green"><%- messages.success %></h5>
+<% } %>
+</h6><h6>
+    <div class="starter-template row well col-sm-10">
+ <div class="table-responsive">
+<table id="table-cluster" class="display">
+ <thead>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Operator</th>
+        <th>Pilot</th>
+        <th>Aircraft</th>
+        <th>Insurance</th>
+        <th>Event</th>
+        <th>Miscellaneous</th>
+        
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Operator</th>
+        <th>Pilot</th>
+        <th>Aircraft</th>
+        <th>Insurance</th>
+        <th>Event</th>
+        <th>Miscellaneous</th>
+        
+        <td></td>
+    </tr>
+    </tfoot>
+    <tbody>
+    
+    <% if (data) { %>
+    <% data.forEach(function(user){ %>
+        <tr>
+            
+            <td><%= user.cod_doc_type %></td>
+            <td><%= user.txt_doc_type_name %></td>
+            <td><%= user.flg_operator_doc %></td>
+            <td><%= user.flg_pilot_doc %></td>
+            <td><%= user.flg_aircraft_doc %></td>
+            <td><%= user.flg_insurance_doc %></td>
+            <td><%= user.flg_event_doc %></td>
+            <td><%= user.flg_misc_doc %></td>
+            
+            <td align="center" style="width: 100px;">
+                 <div class="btn-group" role="group" aria-label="...">
+            <form method="post" action="/documentTypes/delete/<%= user.cod_doc_type %>" style="float:right">
+
+                 <a href='/documentTypes/editDocumentTypes/<%= user.cod_doc_type %>'><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button></a>
+
+                 <button type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete ' +<%= user.cod_doc_type %>)" class="btn btn-danger"><i class="glyphicon glyphicon-trash">
+                 </i></button></a>
+                 <input type="hidden" name="_method" value="DELETE" />
+
+
+                 </form>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    <% } %>
+ </tbody>
+</table>
+ </div>
+ </div>
+ </div>
+ </h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

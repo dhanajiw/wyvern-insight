@@ -1,0 +1,81 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/specTypes/addSpecTypes" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_spec" value="<%= cod_spec %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_spec_name" value="<%= txt_spec_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>Type &nbsp;</td>
+            <td><input type="text" name="txt_spec_type" value="<%= txt_spec_type %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Summary &nbsp;</td>
+            <td><input type="text" name="txt_spec_summary" value="<%= txt_spec_summary %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Regulator &nbsp;</td>
+            <td><input type="text" name="cod_regulator" value="<%= cod_regulator %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Operator &nbsp;</td>
+            <td><input type="text" name="flg_operator" value="<%= flg_operator %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Aircraft &nbsp;</td>
+            <td><input type="text" name="flg_aircraft" value="<%= flg_aircraft %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Pilot &nbsp;</td>
+            <td><input type="text" name="flg_pilot" value="<%= flg_pilot %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Insurance &nbsp;</td>
+            <td><input type="text" name="flg_insurance" value="<%= flg_insurance %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6> 
+  
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

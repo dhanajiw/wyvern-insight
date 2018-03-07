@@ -1,0 +1,55 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/products/addProduct" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_product" value="<%= cod_product %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_product_name" value="<%= txt_product_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>UnitPrice &nbsp;</td>
+            <td><input type="text" name="cod_base_unit_type" value="<%= cod_base_unit_type %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>BaseUnits &nbsp;</td>
+            <td><input type="text" name="num_base_units_multiples" value="<%= num_base_units_multiples %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6>  
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

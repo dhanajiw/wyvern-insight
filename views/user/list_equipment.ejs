@@ -1,0 +1,84 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+     
+<h6>
+<div class="row city col-sm-10" >
+<label class="pull-left title1"><%= title %></label>
+
+<form action="/users_equipment/add_equipment" method="get" >
+<b class="pull-right">
+<input type="submit" name="Submit" value="Add New"   />
+</b>
+</form>
+</h6><br><br><br>
+<h6>
+<% if (messages.error) { %>
+    <h5 style="color:red" ><%- messages.error %></h5>
+<% } %>
+ 
+<% if (messages.success) { %>
+    <h5 style="color:green"><%- messages.success %></h5>
+<% } %>
+</h6><h6>
+    <div class="starter-template row well col-sm-10" >
+ <div class="table-responsive">
+<table id="table-cluster" class="display">
+ <thead>
+    <tr>
+        <th>Code</th>
+        <th>Description</th>
+        
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Code</th>
+        <th>Description</th>
+        
+        <td></td>
+    </tr>
+    </tfoot>
+    <tbody>
+    <!--
+            <tr>
+            <td><input type="text" name="user.cod_equipment"></td>
+            <td><input type="text" name="user.txt_equipment_description"></td>
+            <td><input type="submit" value="Add New" click="add()"></td>
+            </tr>
+    -->
+    <% if (data) { %>
+    <% data.forEach(function(user){ %>
+        <tr>
+            <td><%= user.cod_equipment %></td>
+            <td><%= user.txt_equipment_description %></td>
+            
+            <td align="center" style="width: 100px;">
+                 <div class="btn-group" role="group" aria-label="...">
+            <form method="post" action="/users_equipment/delete/<%= user.cod_equipment %>" style="float:right">
+
+                 <a href='/users_equipment/edit_equipment/<%= user.cod_equipment %>'><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button></a>
+
+                 <button type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete ' +<%= user.cod_equipment %>)" class="btn btn-danger"><i class="glyphicon glyphicon-trash">
+                 </i></button></a>
+                 <input type="hidden" name="_method" value="DELETE" />
+
+                 </form>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    <% } %>
+ </tbody>
+</table>
+</div>
+</div>
+</div>
+</h6>
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

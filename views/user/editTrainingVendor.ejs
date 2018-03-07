@@ -1,0 +1,137 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+        
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/trainingVendors/editTrainingVendor/<%= cod_vendor %>" method="post" name="form1">
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_vendor" value="<%= cod_vendor %>" readonly/></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_name" value="<%= txt_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+        <tr>
+            <td>Address Line1 &nbsp;</td>
+            <td><input type="text" name="txt_primary_street_addr_ln1" value="<%= txt_primary_street_addr_ln1 %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Address Line2 &nbsp;</td>
+            <td><input type="text" name="txt_primary_street_addr_ln2" value="<%= txt_primary_street_addr_ln2 %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Address Line3 &nbsp;</td>
+            <td><input type="text" name="txt_primary_street_addr_ln3" value="<%= txt_primary_street_addr_ln3 %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>City &nbsp;</td>
+            <td><select class="selectpicker" data-style="btn-info" name="cod_city">
+                        <% data1.forEach(function(user){ %>
+                            <option value="<%= user.txt_city_name %>">
+                                <%= user.txt_city_name %>
+                            </option>
+                        <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>State &nbsp;</td>
+            <td><select class="selectpicker" data-style="btn-info" name="cod_state">
+                        <% data2.forEach(function(user){ %>
+                            <option value="<%= user.txt_state_name %>">
+                                <%= user.txt_state_name %>
+                            </option>
+                        <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Country &nbsp;</td>
+            <td><select class="selectpicker" data-style="btn-info" name="cod_country">
+                        <% data3.forEach(function(user){ %>
+                            <option value="<%= user.txt_country_name %>">
+                                <%= user.txt_country_name %>
+                            </option>
+                            <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Postal &nbsp;</td>
+            <td><input type="text" name="cod_postal" value="<%= cod_postal %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Training Type &nbsp;</td>
+            <td><input type="text" name="txt_vendor_training_type" value="<%= txt_vendor_training_type %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Certificate Name &nbsp;</td>
+            <td><input type="text" name="txt_vendor_certificate_name" value="<%= txt_vendor_certificate_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>Port Number &nbsp;</td>
+            <td><input type="text" name="txt_port_number" value="<%= txt_port_number %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+            <td>UserName &nbsp;</td>
+            <td><input type="text" name="txt_login_username" value="<%= txt_login_username %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Password &nbsp;</td>
+            <td><input type="text" name="txt_login_password" value="<%= txt_login_password %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr> 
+        <tr>
+            <td>Identifier &nbsp;</td>
+            <td><input type="text" name="txt_our_identifier" value="<%= txt_our_identifier %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>URL &nbsp;</td>
+            <td><input type="text" name="txt_vendor_url" value="<%= txt_vendor_url %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>  
+            <td></td>
+            <td><input type="submit" name="Submit" value="Update" /></td>
+        </tr>
+            <input type="hidden" name="_method" value="PUT" />
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6> 
+  
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

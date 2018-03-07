@@ -1,0 +1,50 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/standardOperatorReq/addStandardOperator" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_standard" value="<%= cod_standard %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Last 2 Years Audit &nbsp;</td>
+            <td><input type="text" name="flg_wyvern_audit_last_two_years" value="<%= flg_wyvern_audit_last_two_years %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>Last 1 Year Audit &nbsp;</td>
+            <td><input type="text" name="flg_wyvern_audit_last_one_year" value="<%= flg_wyvern_audit_last_one_year %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

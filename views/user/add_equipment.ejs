@@ -1,0 +1,45 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/users_equipment/add_equipment" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_equipment" value="<%= cod_equipment %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Description &nbsp;</td>
+            <td><input type="text" name="txt_equipment_description" value="<%= txt_equipment_description %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6> 
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

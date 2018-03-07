@@ -1,0 +1,65 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+ <form action="/timezones/editTimezone/<%= cod_timezone %>" method="post" name="form1">
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_timezone" value="<%= cod_timezone %>" disabled="disabled"/></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_timezone_name" value="<%= txt_timezone_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+
+        <tr> 
+            <td>GMT Offset &nbsp;</td>
+            <td><input type="text" name="num_hours_gmt_offset" value="<%= num_hours_gmt_offset %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Daylight saving start date &nbsp;</td>
+            <td><input type="date" id="datepicker" name="dat_daylight_savings_start" value="<%= dat_daylight_savings_start %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Daylight saving end date &nbsp;</td>
+            <td><input type="date" id="datepicker" name="dat_daylight_savings_end" value="<%= dat_daylight_savings_end %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Update" /></td>
+        </tr>
+            <input type="hidden" name="_method" value="PUT" />
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6>
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>
+
+
+

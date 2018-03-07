@@ -1,0 +1,65 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/alertTypes/addAlertTypes" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_alert" value="<%= cod_alert %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_alert_name" value="<%= txt_alert_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr>
+            <td>Corporate Departments &nbsp;</td>
+            <td><input type="text" name="flg_alert_for_corporate_departments" value="<%= flg_alert_for_corporate_departments %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Brokers &nbsp;</td>
+            <td><input type="text" name="flg_alert_for_brokers" value="<%= flg_alert_for_brokers %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>Charter Operators &nbsp;</td>
+            <td><input type="text" name="flg_alert_for_charter_operators" value="<%= flg_alert_for_charter_operators %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Support Team &nbsp;</td>
+            <td><input type="text" name="flg_alert_for_support" value="<%= flg_alert_for_support %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

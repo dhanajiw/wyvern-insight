@@ -1,0 +1,57 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+        
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/regulators/editRegulator/<%= cod_regulator %>" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_regulator" value="<%= cod_regulator %>" readonly/></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_regulator_name" value="<%= txt_regulator_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr> 
+        <tr>
+            <td>Country &nbsp;</td>
+            <td><select class="selectpicker" data-style="btn-info" name="cod_country">
+                        <% data1.forEach(function(user){ %>
+                            <option value="<%= user.txt_country_name %>">
+                                <%= user.txt_country_name %>
+                            </option>
+                        <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>  
+            <td></td>
+            <td><input type="submit" name="Submit" value="Update" /></td>
+        </tr>
+            <input type="hidden" name="_method" value="PUT" />
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+        </table>
+</form>
+</div>
+</h6>  
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

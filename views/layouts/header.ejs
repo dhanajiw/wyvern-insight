@@ -1,0 +1,186 @@
+<html ng-app="myApp">
+<head>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+<!--  Bootstrap  -->
+<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"> -->
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+      $(function() {
+        $("#datepicker").datepicker();
+      });
+</script>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<script>
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#table-cluster tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#table-cluster').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+</script>
+
+<script>
+function myFunction() {
+    var d = new Date();
+    var n = d.toISOString().substring(0, 10);
+    document.getElementById("dateid").innerHTML = n;
+}
+</script>
+
+<script>
+function ckeck()
+{
+  if (document.getElementById('ckeckboxid').checked) 
+  {
+      document.getElementById('ckeckboxid').value = 1;
+  } else {
+      document.getElementById('ckeckboxid').value = 0;
+  }
+}
+</script>
+
+<script>
+        $("#formButton").click(function(){
+                $("#form11").toggle();
+            });
+            </script>
+        
+        <script>
+        $('#checkbox').change(function(){
+             $(this).val($(this).attr('checked') ? '1' : '0');
+        });
+</script>
+
+<style type="">
+    tfoot input {
+        width: 50%;  
+    }
+</style>
+<style type="">
+#form11{
+  display:none;
+}
+h5 { 
+    padding-right: 3%;
+    padding-bottom: 1%;
+}
+h6,h3 {
+    padding-right: 3%;
+    padding-left: 3%;
+}
+th,td {
+    font-size: 12;
+}
+nav {      
+          max-width: 160px;
+          margin: 0;
+          padding: 1em;
+      }
+
+/* Menu */
+.menu {
+ list-style-type: none;
+ margin: 0;
+ padding: 10;
+ color: white;
+ font-size: 15;
+ background-color: darkturquoise;
+}
+p.big {
+    line-height: 1.5;
+}
+label.title1{
+    font-size: 20;
+}
+.city {
+    background-color: #f4a641;
+    color: white;
+    padding: 10px;
+}
+b {
+  background-color: white;
+    color: black;  
+}
+</style>
+  
+<title><%= title %></title>
+</head>
+<body class="row">
+    <header>
+      <ul class="menu">
+        <!--<img src="../images/download.png" width="75px" height="50px">-->
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="active" href="/">Home</a> <span> |</span>
+        <a href="about.html">About Us</a><span> |</span>
+        <a href="service.html">Services</a> <span> |</span>
+        <a href="contact/contact.html">Contact Us</a>
+      </ul>
+    </header>
+        <h5><div class="col-sm-2">
+            <nav>
+            <ul>
+                &nbsp;<br>
+            <u><p class="big">
+            <a href="/users_equipment">Equipments</a> <br>
+            <a href="/aircraftTypes">Aircraft Types</a> <br>
+            <a href="/aircraftModels">Aircraft&nbsp;Models</a> <br>
+            <a href="/alertTypes">Alert&nbsp;Types</a> <br>
+            <a href="/products">Products</a> <br>
+            <a href="/productSlabs">Product&nbsp;Slabs</a> <br>
+            <a href="/regulators">Regulators</a> <br>
+            <a href="/states">States</a> <br>
+            <a href="/trainingVendors">Training&nbsp;Vendors</a> <br>
+            <a href="/specTypes">Specification&nbsp;Types</a> <br>
+            <a href="/documentTypes">Document&nbsp;Types</a> <br>
+            <a href="/insurers">Insurers</a> <br>
+            <a href="/manufacturers">Manufacturers</a> <br>
+            <a href="/amenities">Amenities</a> <br>
+            <a href="/aircraftCategories">Aircraft&nbsp;Categories</a> <br>
+            <a href="/airports">Airports</a> <br>
+            <a href="/waivers">Waivers</a> <br>
+            <a href="/countries">Countries</a> <br>
+            <a href="/timezones">Timezones</a> <br>
+            <a href="/cities">Cities</a> <br>
+            <a href="/regions">Regions</a> <br>
+            <!-- <a href="/standardAircraftReq">Aircraft Requirements</a> <br>
+            <a href="/standardOperatorReq">Operator Requirements</a>  -->
+            </p></u>
+        </ul>
+        </nav>
+        </div>    
+    </h5>

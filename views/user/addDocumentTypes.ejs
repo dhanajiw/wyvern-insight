@@ -1,0 +1,77 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/documentTypes/addDocumentTypes" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_doc_type" value="<%= cod_doc_type %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_doc_type_name" value="<%= txt_doc_type_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>Operator &nbsp;</td>
+            <td><input type="text" name="flg_operator_doc" value="<%= flg_operator_doc %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Pilot &nbsp;</td>
+            <td><input type="text" name="flg_pilot_doc" value="<%= flg_pilot_doc %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>Aircraft &nbsp;</td>
+            <td><input type="text" name="flg_aircraft_doc" value="<%= flg_aircraft_doc %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Insurance &nbsp;</td>
+            <td><input type="text" name="flg_insurance_doc" value="<%= flg_insurance_doc %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+		<tr>
+            <td>Event &nbsp;</td>
+            <td><input type="text" name="flg_event_doc" value="<%= flg_event_doc %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Miscellaneous &nbsp;</td>
+            <td><input type="text" name="flg_misc_doc" value="<%= flg_misc_doc %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

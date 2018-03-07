@@ -1,0 +1,73 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/waivers/addWaiver" method="post" name="form1">
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_waiver" value="<%= cod_waiver %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_waiver_name" value="<%= txt_waiver_name %>" /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Pilot &nbsp;</td>
+            <td>
+                    <% let chk = flg_waiver_for_pilot.checked ? "0" : "1" %>
+                    <input id="opt1" type="checkbox" name="flg_waiver_for_pilot" value="<%= chk %>" />
+                    <!-- <input id="opt1" type="checkbox" name="flg_waiver_for_pilot" <%= checked ? "1" : "0" %> /> -->
+                <!-- <input type="checkbox" name="flg_waiver_for_pilot" value='1' /><input type="hidden" name="flg_waiver_for_pilot" value='0' /></td> -->
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Aircraft &nbsp;</td>
+            <td><input type="checkbox" name="flg_waiver_for_aircraft" value='1' /><input type="hidden" name="flg_waiver_for_aircraft" value='0' /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Insurance &nbsp;</td>
+            <td><input type="checkbox" name="flg_waiver_for_insurance" value='1' /><input type="hidden" name="flg_waiver_for_insurance" value='0' /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Operator &nbsp;</td>
+            <td><input type="checkbox" name="flg_waiver_for_operator" value='1' /><input type="hidden" name="flg_waiver_for_operator" value='0' /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Document &nbsp;</td>
+            <td><input type="checkbox" name="flg_doc_upload_mandatory" value='1' /><input type="hidden" name="flg_doc_upload_mandatory" value='0' /></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6> 
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

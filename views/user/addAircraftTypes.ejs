@@ -1,0 +1,84 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+ 
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/aircraftTypes/addAircraftTypes" method="post" name="form1">
+
+    <table>
+        <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_aircraft_type" value="<%= cod_aircraft_type %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Description &nbsp;</td>
+            <td><input type="text" name="txt_type_description" value="<%= txt_type_description %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+        <tr>
+            <td>Manufacturer Code &nbsp;</td>
+            <td><select class="selectpicker" data-style="btn-info" name="cod_manufacturer">
+                        <% data.forEach(function(user){ %>
+                            <option value="<%= user.txt_manufacturer_name %>">
+                                <%= user.txt_manufacturer_name %>
+                            </option>
+                        <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>No. of Seats &nbsp;</td>
+            <td><input type="text" name="num_seats" value="<%= num_seats %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+        <tr>
+            <td>ICAOType Code &nbsp;</td>
+            <td><input type="text" name="txt_icao_type_code" value="<%= txt_icao_type_code %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>Helicopter &nbsp;</td>
+            <td><input type="text" name="flg_helicopter" value="<%= flg_helicopter %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr> 
+        <tr>
+            <td>SinglePilotOperations &nbsp;</td>
+            <td><input type="text" name="flg_single_pilot_operations" value="<%= flg_single_pilot_operations %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td>London City Landings &nbsp;</td>
+            <td><input type="text" name="flg_london_city_landings" value="<%= flg_london_city_landings %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Add" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+    </table>
+</form>
+</div>
+</h6> 
+ 
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

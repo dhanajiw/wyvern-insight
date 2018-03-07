@@ -1,0 +1,120 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+ 
+<h6>
+<div class="row city col-sm-10" >
+<label class="pull-left title1"><%= title %></label>
+
+<form action="/trainingVendors/addTrainingVendor" method="get" >
+<b class="pull-right">
+<input type="submit" name="Submit" value="Add New"   />
+</b>
+</form>
+</h6><br><br><br>
+    <h6>
+<% if (messages.error) { %>
+    <h5 style="color:red" ><%- messages.error %></h5>
+<% } %>
+ 
+<% if (messages.success) { %>
+    <h5 style="color:green"><%- messages.success %></h5>
+<% } %>
+</h6><h6>
+    <div class="starter-template row well col-sm-10">
+ <div class="table-responsive">
+<table id="table-cluster" class="display">
+ <thead>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Address&nbsp;Line1</th>
+        <th>Address&nbsp;Line2</th>
+        <th>Address&nbsp;Line3</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Postal</th>
+        <th>Training&nbsp;Type</th>
+        <th>Certificate&nbsp;Name</th>
+        <th>Port&nbsp;Number</th>
+        <th>UserName</th>
+        <th>Password</th>
+        <th>Identifier</th>
+        <th>URL</th>
+
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Address&nbsp;Line1</th>
+        <th>Address&nbsp;Line2</th>
+        <th>Address&nbsp;Line3</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Postal</th>
+        <th>Training&nbsp;Type</th>
+        <th>Certificate&nbsp;Name</th>
+        <th>Port&nbsp;Number</th>
+        <th>UserName</th>
+        <th>Password</th>
+        <th>Identifier</th>
+        <th>URL</th>
+
+        <td></td>
+    </tr>
+    </tfoot>
+    <tbody>
+    
+    <% if (data) { %>
+    <% data.forEach(function(user){ %>
+        <tr>
+            <td><%= user.cod_vendor %></td>
+            <td><%= user.txt_name %></td>
+            <td><%= user.txt_primary_street_addr_ln1 %></td>
+            <td><%= user.txt_primary_street_addr_ln2 %></td>
+            <td><%= user.txt_primary_street_addr_ln3 %></td>
+            <td><%= user.cod_city %></td>
+            <td><%= user.cod_state %></td>
+            <td><%= user.cod_country %></td>
+            <td><%= user.cod_postal %></td>
+            <td><%= user.txt_vendor_training_type %></td>
+            <td><%= user.txt_vendor_certificate_name %></td>
+            <td><%= user.txt_port_number %></td>
+            <td><%= user.txt_login_username %></td>
+            <td><%= user.txt_login_password %></td>
+            <td><%= user.txt_our_identifier %></td>
+            <td><%= user.txt_vendor_url %></td>
+            
+            <td align="center" style="width: 100px;">
+                 <div class="btn-group" role="group" aria-label="...">
+            <form method="post" action="/trainingVendors/delete/<%= user.cod_vendor %>" style="float:right">
+
+                 <a href='/trainingVendors/editTrainingVendor/<%= user.cod_vendor %>'><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button></a>
+
+                 <button type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete ' +<%= user.cod_vendor %>)" class="btn btn-danger"><i class="glyphicon glyphicon-trash">
+                 </i></button></a>
+                 <input type="hidden" name="_method" value="DELETE" />
+
+
+                 </form>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    <% } %>
+ </tbody>
+</table>
+ </div>
+ </div>
+ </div>
+ </h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

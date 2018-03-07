@@ -1,0 +1,44 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>    
+        
+<h6>
+<% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+<h3><%= title %><hr></h3>
+<div class="container">
+<form action="/amenities/editAmenities/<%= cod_amenity %>" method="post" name="form1">
+    <table>
+               <tr>
+            <td>Code &nbsp;</td>
+            <td><input type="text" name="cod_amenity" value="<%= cod_amenity %>" readonly/></td>
+        </tr>
+		<tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td>Name &nbsp;</td>
+            <td><input type="text" name="txt_amenity_name" value="<%= txt_amenity_name %>" /></td>
+        </tr>
+        <tr><td>&nbsp;&nbsp;</td></tr>
+		<tr> 
+            <td></td>
+            <td><input type="submit" name="Submit" value="Update" /></td>
+        </tr>
+            <input type="hidden" name="_method" value="PUT" />
+        <tr><td>&nbsp;&nbsp;</td></tr>
+        <tr>
+        <td>
+            <% if (messages.success) { %>
+            <p style="color:green"><%- messages.success %></p>
+            <% } %>
+        </td>
+        </tr>
+        </table>
+</form>
+ </div>
+ </h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

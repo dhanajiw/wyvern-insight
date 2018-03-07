@@ -1,0 +1,88 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+ 
+<h6>
+<div class="row city col-sm-10" >
+<label class="pull-left title1"><%= title %></label>
+
+<form action="/standardAircraftReq/addStandardAircraft" method="get" >
+<b class="pull-right">
+<input type="submit" name="Submit" value="Add New"   />
+</b>
+</form>
+</h6><br><br><br>
+<h6>
+<% if (messages.error) { %>
+    <h5 style="color:red" ><%- messages.error %></h5>
+<% } %>
+ 
+<% if (messages.success) { %>
+    <h5 style="color:green"><%- messages.success %></h5>
+<% } %>
+</h6><h6>
+    <div class="starter-template row well col-sm-10">
+ <div class="table-responsive">
+<table id="table-cluster" class="display">
+ <thead>
+    <tr>
+        <th>Code</th>
+        <th>Aircraftnbsp;Registration</th>
+        <th>Type</th>
+        <th>Minimum&nbsp;Seats</th>
+        <th>Requirement</th>
+        
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Code</th>
+        <th>Aircraft&nbsp;Registration</th>
+        <th>Type</th>
+        <th>Minimum&nbsp;Seats</th>
+        <th>Requirement</th>
+        
+        <td></td>
+    </tr>
+    </tfoot>
+    <tbody>
+    
+    <% if (data) { %>
+    <% data.forEach(function(user){ %>
+        <tr>
+            <td><%= user.cod_standard %></td>
+            <td><%= user.flg_aircraft_registration %></td>
+            <td><%= user.txt_aircraft_type %></td>
+            <td align="right"><%= user.num_min_seats %></td>
+            <td><%= user.standard_aircraft_reqcol %></td>
+            
+            
+            <td align="center" style="width: 100px;">
+                 <div class="btn-group" role="group" aria-label="...">
+            <form method="post" action="/standardAircraftReq/delete/<%= user.cod_standard %>" style="float:right">
+
+                 <a href='/standardAircraftReq/editStandardAircraft/<%= user.cod_standard %>'><button type="button" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></button></a>
+
+                 <button type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete ' +<%= user.cod_standard %>)" class="btn btn-danger"><i class="glyphicon glyphicon-trash">
+                 </i></button></a>
+                 <input type="hidden" name="_method" value="DELETE" />
+
+
+                 </form>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    <% } %>
+ </tbody>
+</table>
+ </div>
+ </div>
+ </div>
+ </h6>
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>
